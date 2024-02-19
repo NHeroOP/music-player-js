@@ -2,6 +2,7 @@ body {
   background-image: url("assets/img/bg.jpg");
   background-size: cover;
   background-position: center;
+  font-family: "Inter", sans-serif;
 }
 
 html, body, main {
@@ -75,7 +76,7 @@ h3 {
 
   padding: 16px;
   border-radius: 12px;
-  background-color: #212936;
+  background-color: #121826ea;
 }
 
 img {
@@ -86,6 +87,27 @@ img {
 .song-info {
   flex-direction: column;
   text-align: center;
+}
+
+.title{
+  color: #E5E7EB;
+  font-size: 1rem;
+}
+
+.artist {
+  margin-block: 6px;
+  color: #4D5562;
+  font-size: 0.75rem;
+}
+
+.time {
+  color: #4D5562;
+  font-size: 0.625rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .control-btn {

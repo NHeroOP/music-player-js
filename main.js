@@ -5,6 +5,7 @@ const setDetails = (cnt) => {
   img.src = playListData[cnt].artwork
   title.textContent = playListData[cnt].title
   artist.textContent = playListData[cnt].artist
+
 }
 
 function nextSong(){
@@ -14,9 +15,8 @@ function nextSong(){
   else {
     counter += 1
   }
-  
+
   setDetails(counter)
-  audio.play()  
 }
 
 function prevSong(){
@@ -26,14 +26,14 @@ function prevSong(){
   else {
     counter -= 1
   }
-
+  
   setDetails(counter)
-  audio.play()
 }
 
 let counter = 0;
 const totalSongs = playListData.length
 let play = false
+let interval;
 
 const audio = document.querySelector("audio")
 const img = document.querySelector("img")
@@ -44,11 +44,17 @@ const playBtn = document.querySelector("#play")
 const prevBtn = document.querySelector("#prev")
 const nextBtn = document.querySelector("#next")
 const progressBar = document.querySelector(".progress")
+const startedTime = document.querySelector(".started-time")
+const totalTime = document.querySelector(".total-time")
 
+function updateTime() {
+  const minutes = Math.floor(audio.currentTime / 60);
+  const seconds = Math.floor(audio.currentTime % 60);
+  startedTime.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+}
 
 setDetails(counter)
 audio.volume = 0.2;
-
 
 audio.addEventListener("timeupdate", (e) => {
   let progress = `${(audio.currentTime / audio.duration) * 100}%`
@@ -60,8 +66,13 @@ audio.addEventListener("ended", (e) => {
 })
 
 playBtn.addEventListener("click", () => {
+
+  setTotalTime()
+
   if (play) {
     audio.pause()
+
+    clearInterval(interval)
     play = false
     
     playBtn.querySelector('i.fas').classList.add('fa-play');
@@ -69,7 +80,10 @@ playBtn.addEventListener("click", () => {
   }
   else {
     audio.play()
+
+    interval = setInterval(updateTime, 1000)
     play = true
+
     playBtn.querySelector('i.fas').classList.remove('fa-play');
     playBtn.querySelector('i.fas').classList.add('fa-pause');
   }
@@ -78,3 +92,8 @@ playBtn.addEventListener("click", () => {
 prevBtn.addEventListener("click", (e) => prevSong())
 nextBtn.addEventListener("click", (e) => nextSong())
 
+function setTotalTime(){
+  const minutes = Math.floor(audio.duration / 60);
+  const seconds = Math.floor(audio.duration % 60);
+  totalTime.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`; 
+}
