@@ -85,6 +85,10 @@ img {
   cursor: pointer;
 }
 
+.control-btn:focus {
+  outline: 0;
+}
+
 #play {
   background-color: #C93B76;
   color: #fff;
