@@ -1,5 +1,12 @@
 import playListData from "./constants.js";
 
+const setDetails = (cnt) => {
+  audio.src = playListData[cnt].url
+  img.src = playListData[cnt].artwork
+  title.textContent = playListData[cnt].title
+  artist.textContent = playListData[cnt].artist
+}
+
 function nextSong(){
   if (counter === (totalSongs - 1)){
     counter = 0;
@@ -38,12 +45,6 @@ const prevBtn = document.querySelector("#prev")
 const nextBtn = document.querySelector("#next")
 const progressBar = document.querySelector(".progress")
 
-const setDetails = (cnt) => {
-  audio.src = playListData[cnt].url
-  img.src = playListData[cnt].artwork
-  title.textContent = playListData[cnt].title
-  artist.textContent = playListData[cnt].artist
-}
 
 setDetails(counter)
 audio.volume = 0.2;
