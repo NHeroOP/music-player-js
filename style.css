@@ -3,7 +3,34 @@ body {
   background-size: cover;
 }
 
+html, body, main {
+  height: 100%;
+}
+
 body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
+}
+
+main {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.progress-bar {
+  height: 6px;
+  width: 100%;
+  cursor: pointer;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #fe8daa;
+  transition: width 0.1s linear;
 }
