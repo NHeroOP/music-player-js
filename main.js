@@ -3,7 +3,6 @@ import playListData from "./constants.js";
 
 const audio = document.querySelector("audio")
 const img = document.querySelector("img")
-const info = document.querySelector(".info")
 const title = document.querySelector(".title")
 const artist = document.querySelector(".artist")
 const playBtn = document.querySelector("#play")
@@ -54,35 +53,7 @@ function updateTime() {
   requestAnimationFrame(updateTime);
 }
 
-
-function nextSong(){
-  if (counter === (totalSongs - 1)){
-    counter = 0;
-  }
-  else {
-    counter += 1
-  }
-
-  setDetails(counter)
-}
-
-function prevSong(){
-  if (counter === 0) {
-    counter = totalSongs - 1
-  }
-  else {
-    counter -= 1
-  }
-  
-  setDetails(counter)
-}
-
-
-audio.addEventListener("loadedmetadata", updateTotalTime);
-audio.addEventListener("ended", nextSong);
-audio.volume = 0.2;
-
-playBtn.addEventListener("click", () => {
+function playPause(){
   if (play) {
     audio.pause()
 
@@ -101,6 +72,41 @@ playBtn.addEventListener("click", () => {
     playBtn.querySelector('i.fas').classList.remove('fa-play');
     playBtn.querySelector('i.fas').classList.add('fa-pause');
   }
+}
+
+function nextSong(){
+  if (counter === (totalSongs - 1)){
+    counter = 0;
+  }
+  else {
+    counter += 1
+  }
+
+  setDetails(counter)
+  play = false
+  playPause()
+}
+
+function prevSong(){
+  if (counter === 0) {
+    counter = totalSongs - 1
+  }
+  else {
+    counter -= 1
+  }
+  
+  setDetails(counter)
+  play = false
+  playPause()
+}
+
+
+audio.addEventListener("loadedmetadata", updateTotalTime);
+audio.addEventListener("ended", nextSong);
+audio.volume = 0.2;
+
+playBtn.addEventListener("click", (e) => {
+  playPause()
 })
 
 prevBtn.addEventListener("click", (e) => prevSong())
