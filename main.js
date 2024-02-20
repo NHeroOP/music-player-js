@@ -8,7 +8,8 @@ const artist = document.querySelector(".artist")
 const playBtn = document.querySelector("#play")
 const prevBtn = document.querySelector("#prev")
 const nextBtn = document.querySelector("#next")
-const progressBar = document.querySelector(".progress")
+const progressBar = document.querySelector(".progress-bar")
+const progress = document.querySelector(".progress")
 const startedTime = document.querySelector(".started-time")
 const totalTime = document.querySelector(".total-time")
 
@@ -16,6 +17,19 @@ let counter = 0;
 const totalSongs = playListData.length
 let play = false
 let interval;
+
+
+progressBar.addEventListener("click", function(e) {
+  if(!play) {
+    return;
+  }
+
+  const width = this.clientWidth;
+  const clickX = e.offsetX
+  const duration = audio.duration 
+
+  audio.currentTime = (clickX / width) * duration;
+})
 
 setDetails(counter)
 function setDetails (cnt) {
@@ -47,9 +61,7 @@ function updateTime() {
   const seconds = Math.floor(audio.currentTime % 60);
   startedTime.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-  const progress = `${(audio.currentTime / audio.duration) * 100}%`;
-  progressBar.style.width = progress;
-
+  progress.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
   requestAnimationFrame(updateTime);
 }
 
