@@ -17,22 +17,28 @@ const totalTime = document.querySelector(".total-time")
 const eng = document.querySelector(".english")
 const hindi = document.querySelector(".hindi")
 
-eng.addEventListener("click", (e) => {
-  playListData = playlists["english"]
-
+function resetState() {
   counter = 0
   setDetails(counter)
   totalSongs = playListData.length
+
+  play = false
+  playPause()
+
+  progress.style.width = "0%"
+  startedTime.textContent = "00:00"
+}
+
+eng.addEventListener("click", (e) => {
+  playListData = playlists["english"]
+  resetState()
 
   eng.style.backgroundColor = "#6f7683"
   hindi.style.backgroundColor = "initial"
 })
 hindi.addEventListener("click", (e) => {
   playListData = playlists["hindi"]
-
-  counter = 0
-  setDetails(counter)
-  totalSongs = playListData.length
+  resetState()
 
   hindi.style.backgroundColor = "#6f7683"
   eng.style.backgroundColor = "initial"
