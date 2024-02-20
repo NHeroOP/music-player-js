@@ -1,4 +1,6 @@
-import playListData from "./constants.js";
+import playlists from "./constants.js";
+
+let playListData = playlists["english"];
 
 
 const audio = document.querySelector("audio")
@@ -12,11 +14,36 @@ const progressBar = document.querySelector(".progress-bar")
 const progress = document.querySelector(".progress")
 const startedTime = document.querySelector(".started-time")
 const totalTime = document.querySelector(".total-time")
+const eng = document.querySelector(".english")
+const hindi = document.querySelector(".hindi")
+
+eng.addEventListener("click", (e) => {
+  playListData = playlists["english"]
+
+  counter = 0
+  setDetails(counter)
+  totalSongs = playListData.length
+
+  eng.style.backgroundColor = "#6f7683"
+  hindi.style.backgroundColor = "initial"
+})
+hindi.addEventListener("click", (e) => {
+  playListData = playlists["hindi"]
+
+  counter = 0
+  setDetails(counter)
+  totalSongs = playListData.length
+
+  hindi.style.backgroundColor = "#6f7683"
+  eng.style.backgroundColor = "initial"
+})
+
 
 let counter = 0;
-const totalSongs = playListData.length
+let totalSongs = playListData.length
 let play = false
 let interval;
+eng.style.backgroundColor = "#6f7683"
 
 
 progressBar.addEventListener("click", function(e) {

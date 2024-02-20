@@ -1,4 +1,4 @@
-const playListData = [
+const playListDataEnglish = [
   {
     id: 1,
     title: 'Shape Of You',
@@ -41,4 +41,28 @@ const playListData = [
   },
 ];
 
-export default playListData
+const playListDataHindi = [
+  {
+    id: 1,
+    title: 'Hass Hass',
+    artist: 'Diljit Dosanjh, Sia, Greg Kurstin',
+    album: 'Single',
+    artwork:"https://i.scdn.co/image/ab67616d0000b27374a99276badeec2675a9eaec",
+    url: './assets/audio/one-hindi.mp3',
+  },
+  {
+    id: 2,
+    title: 'King Shit',
+    artist: 'Shubh',
+    album: 'Leo',
+    artwork:"https://i.scdn.co/image/ab67616d0000b2733bf0683f6ac36cc954339d03",
+    url: './assets/audio/two-hindi.mp3',
+  },
+]
+
+const playlists = {
+  english: playListDataEnglish,
+  hindi: playListDataHindi,
+};
+
+export default playlists;
