@@ -58,6 +58,14 @@ const playListDataHindi = [
     artwork:"https://i.scdn.co/image/ab67616d0000b2733bf0683f6ac36cc954339d03",
     url: './assets/audio/two-hindi.mp3',
   },
+  {
+    id: 3,
+    title: 'Maan Meri Jaan',
+    artist: 'King',
+    album: 'Champagne Talk',
+    artwork:"https://i.scdn.co/image/ab67616d0000b27337f65266754703fd20d29854",
+    url: './assets/audio/three-hindi.mp3',
+  },
 ]
 
 const playlists = {

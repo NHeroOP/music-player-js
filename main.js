@@ -69,7 +69,7 @@ function setDetails (cnt) {
   audio.src = playListData[cnt].url
   img.src = playListData[cnt].artwork
   title.textContent = playListData[cnt].title
-  artist.textContent = playListData[cnt].artist
+  artist.textContent = `${playListData[cnt].artist} . ${playListData[cnt].album}`
 
   updateTotalTime()
 }
