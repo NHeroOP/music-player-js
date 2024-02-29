@@ -77,3 +77,5 @@ I will continue to update this site and make it fully working music site using f
 ## Acknowledgments
 
 The design of website I got from the web & some things I learned from Youtube
+
+## If you have any issues related to copyright claims or anything please contact me 
